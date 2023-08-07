@@ -1,43 +1,75 @@
 import { homePageLoad } from "./home.js";
+import { menuPageLoad } from "./menu.js";
+import { contactPageLoad } from "./contact.js";
 
 
-//write initial page load function that will create each div and append to div.content
-function pageLoad() {
-    window.addEventListener("DOMContentLoaded", (event) => {
-        // console.log("DOM fully loaded and parsed");
+// Write the tab-switching logic inside of index.js. You should have event listeners for each tab that wipes out the current contents and then runs the correct ‘tab module’ to populate it again.
 
-        // const content = document.querySelector('div#content');
+function createHeader(){
+    //create elements
+    let header = document.createElement('header');
+    const menu = document.createElement('ul');
 
-        // //create elements
-        // const header = document.createElement('header');
-        // const menu = document.createElement('ul');
+    let menuItemsArray = ["Home", "Menu", "Contact"]; 
 
-        // let menuItemsArray = ["Home", "Menu", "Contact"]; 
+    for (let i = 0; i < menuItemsArray.length; i++){
+        //create li, add array item as textContent of li, add id, add li as child of menu (ul)
+        let listItem = document.createElement('li');
+        listItem.textContent = menuItemsArray[i];
+        listItem.id = menuItemsArray[i].toLowerCase();
+        menu.appendChild(listItem);
+    }
+    header.appendChild(menu);
+    header.addEventListener('click', eventHandler);
+    return header;
+}
+document.body.appendChild(createHeader());
 
-        // for (let i = 0; i < menuItemsArray.length; i++){
-        //     //create li, add array item as textContent of li, add id, add li as child of menu (ul)
-        //     let listItem = document.createElement('li');
-        //     listItem.textContent = menuItemsArray[i];
-        //     listItem.id = menuItemsArray[i].toLowerCase();
-        //     menu.appendChild(listItem);
-        // }
-       
-        // header.appendChild(menu);
-
-        // //append to content div - can this be a loop that checks if elements exist and if so, append them?
-        // content.appendChild(header);
-        
-        // return content;
-    })
-};
+let content = document.querySelector('#content');
 
 
-//document.body.appendChild(pageLoad());
-document.body.appendChild(homePageLoad());
+function eventHandler(e){
+    switch (e.target.id){
+        case 'home': console.log('home btn clicked');
+        //code to unappend children
+
+
+        //if div#content exists in document.body.childNodes, remove it from dom
+        let mynodeList = document.body.childNodes;
+console.log(mynodeList);
+        if (mynodeList.includes("div#content")){
+            console.log("document body includes div#content");
+        }
+       //console.log(document.body.children);
+       console.log(document.body.childNodes);
+
+        homePageLoad();
+        //console.log(document.body.children);
+        console.log(document.body.childNodes);
+
+        break;
+        case 'menu': console.log('menu btn clicked');
+        //code to unappend children
+
+
+        menuPageLoad();
+        break;
+
+        case 'contact': console.log('contact btn clicked');
+        //code to unappend children
+
+        contactPageLoad();
+        break; 
+    }
+}
 
 
 
 
-// create component class or factory to be able to create each component 
-// header and footer could be the same 
-// each of the wrappers could be the same 
+function createFooter(){
+
+}
+
+
+
+
