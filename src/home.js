@@ -1,6 +1,5 @@
 // Module to load HOME MODULE content
 
-//export this function below
 export { homePageLoad };
 
 //function that creates div, adds content and appends to dom
@@ -9,10 +8,9 @@ function homePageLoad(){
     //CREATES THE DIV
     const content = document.createElement('div');
     content.id = "content";
-
+    const footer = document.querySelector('footer');
+   
     //ADDS CONTENT
-    //function that creates section
-    //appends to content
         function createSection(obj){
             let wrapper = document.createElement('div');
             wrapper.classList.add('wrapper');
@@ -41,29 +39,12 @@ function homePageLoad(){
 
 
     //APPENDS TO DOM
-    document.body.appendChild(content);
+    //document.body.appendChild(content);
+    document.body.insertBefore(content,footer); 
 }
 
 
-//a way to create each section object then append them all to one element and return that element
-
-/* create function, pass in array of objects,
-for each object: 
-    create div with class of wrapper
-    Create heading element using value of titleTag
-    Set text of heading using TitleText 
-    append heading to wrapper
-    Create p element (if req)
-    Set text of p 
-    append p to wrapper
-    Create img element (if req)
-    Set src of img
-    append img to wrapper
-    append wrapper to content
-*/
-
-
-
+//DATA OBJECTS
 const heading = {
     titleTag: "h1",
     titleText : "The Stardrop Saloon",
@@ -75,7 +56,7 @@ const about = {
     textTag: "p",
     bodyText: "The Stardrop Saloon is owned by Gus, and is located in the center of Pelican Town. It's a meeting place for many villagers, and hosts a variety of entertainment, including fully playable arcade machines, a jukebox, and a Joja Cola soda machine.",
     imgSrc: "/src/saloon.png",
-    imgAlt: "Stardw Valley Stardrop Saloon",
+    imgAlt: "Stardew Valley Stardrop Saloon",
     style: "width: 250px",
 }
 

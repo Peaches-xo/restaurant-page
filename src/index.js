@@ -1,6 +1,7 @@
 import { homePageLoad } from "./home.js";
 import { menuPageLoad } from "./menu.js";
 import { contactPageLoad } from "./contact.js";
+import './style.css';
 
 
 // Write the tab-switching logic inside of index.js. You should have event listeners for each tab that wipes out the current contents and then runs the correct ‘tab module’ to populate it again.
@@ -30,45 +31,52 @@ let content = document.querySelector('#content');
 
 function eventHandler(e){
     switch (e.target.id){
-        case 'home': console.log('home btn clicked');
-        //code to unappend children
+        case 'home':
+            clearContent();
+            homePageLoad();
+            break;
+        case 'menu': 
+            clearContent();
+            menuPageLoad();
+            break;
+        case 'contact': 
+            clearContent();
+            contactPageLoad();
+            break; 
+    }
+}
 
-
-        //if div#content exists in document.body.childNodes, remove it from dom
-        let mynodeList = document.body.childNodes;
-console.log(mynodeList);
-        if (mynodeList.includes("div#content")){
-            console.log("document body includes div#content");
-        }
-       //console.log(document.body.children);
-       console.log(document.body.childNodes);
-
-        homePageLoad();
-        //console.log(document.body.children);
-        console.log(document.body.childNodes);
-
-        break;
-        case 'menu': console.log('menu btn clicked');
-        //code to unappend children
-
-
-        menuPageLoad();
-        break;
-
-        case 'contact': console.log('contact btn clicked');
-        //code to unappend children
-
-        contactPageLoad();
-        break; 
+function clearContent(){
+    const element = document.getElementById("content");
+    if (element !== null){   
+         element.remove();
     }
 }
 
 
 
 
-function createFooter(){
 
+function createFooter(){
+//create elements
+let footer = document.createElement('footer');
+const creditMenu = document.createElement('ul');
+
+let creditMenuItemsArray = ["Image Credits", "Stardew Credits", "The Odin Project", "Github"]; 
+
+for (let i = 0; i < creditMenuItemsArray.length; i++){
+    //create li, add array item as textContent of li, add id, add li as child of menu (ul)
+    let listItem = document.createElement('li');
+    listItem.textContent = creditMenuItemsArray[i];
+
+    creditMenu.appendChild(listItem);
 }
+footer.appendChild(creditMenu);
+
+return footer;
+}
+document.body.appendChild(createFooter());
+
 
 
 

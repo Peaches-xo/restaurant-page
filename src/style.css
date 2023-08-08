@@ -9,4 +9,95 @@
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
+    list-style-type: none;
+}
+
+@font-face {
+    font-family: 'StardewValley';
+    src: url('/src/Stardew_Valley.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('/src/OpenSans.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'SDV_CAPS';
+    src: url('/src/SDV_CAPS.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'SV_Thin';
+    src: url('/src/SVThin.ttf') format('truetype');
+}
+
+
+body{
+    position: relative;
+    min-height: 100vh;
+    background: url('/src/med_logo.png'), url('/src/stardewbackground.png') no-repeat fixed center center / cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+header ul,
+footer ul{
+   display: flex;
+   width: 100vw;
+   justify-content: center;
+   background-color: rgba(21, 71, 148, 0.8);
+  
+}
+
+header li,
+footer li{
+    padding: 10px 20px;
+    color: #fbfbf0;
+    font-size: 30px;
+    font-family: 'StardewValley';
+}
+
+
+#content{
+    /* background-color: var(--lightYellow); */
+    background:linear-gradient(180deg, rgba(255,200,124,1) 0%, rgba(255,200,124,1) 40%, rgba(237,172,109,1) 100%);
+    font-family: 'SV_Thin';
+    margin: 100px;
+    padding: 50px;
+    border: solid 10px transparent;
+    border-radius: 10px;
+    border-image: url('/src/border.png') 33 stretch;
+    border-image-slice: 33%;
+    transition: 0.3s ease;
+    line-height: 1.1;
+    letter-spacing: 0.9px;
+}
+
+
+.wrapper h1 {
+    font-family: 'SDV_CAPS';
+    font-size: 50px;
+}
+p {
+    margin: 10px;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+footer ul{
+    background-color: rgb(21 148 136 / 37%);
 }
