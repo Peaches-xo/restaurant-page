@@ -62,7 +62,7 @@ function createFooter(){
 let footer = document.createElement('footer');
 const creditMenu = document.createElement('ul');
 
-let creditMenuItemsArray = ["Image Credits", "Stardew Credits", "The Odin Project", "Github"]; 
+let creditMenuItemsArray = ["Credits", "The Odin Project", "Github"]; 
 
 for (let i = 0; i < creditMenuItemsArray.length; i++){
     //create li, add array item as textContent of li, add id, add li as child of menu (ul)

@@ -1,4 +1,6 @@
 // Module to load CONTACT MODULE content
+import gusDialog from './gus-dialog.png';
+import emilyDialog from './emily-dialog.png';
 
 export { contactPageLoad };
 
@@ -8,6 +10,7 @@ function contactPageLoad(){
 
         const content = document.createElement('div');
         content.id = "content";
+        const footer = document.querySelector('footer');
 
         function createSection(obj){
             let wrapper = document.createElement('div');
@@ -24,11 +27,17 @@ function contactPageLoad(){
             }
     
             if(obj.imgSrc){
-                let img = document.createElement('img');
-                img.setAttribute('src', obj.imgSrc);
-                img.setAttribute('alt', obj.imgAlt);
-                img.setAttribute('style', obj.style);
-                wrapper.appendChild(img);        
+
+
+                const myImage = new Image();
+                myImage.src = obj.imgName;
+
+                //let img = document.createElement('img');
+                //img.setAttribute('src', obj.imgSrc);
+                myImage.setAttribute('alt', obj.imgAlt);
+                //myImage.setAttribute('style', obj.style);
+                myImage.classList.add(obj.titleText)
+                wrapper.appendChild(myImage);        
             }
     
             content.appendChild(wrapper);
@@ -36,13 +45,11 @@ function contactPageLoad(){
          contentArrayofObjects.forEach(createSection);
 
          //APPENDS TO DOM
-        document.body.appendChild(content);
+         document.body.insertBefore(content,footer); 
 }
 
 
-// create component class or factory to be able to create each component 
-// header and footer could be the same 
-// each of the wrappers could be the same 
+
 
 
 
@@ -57,8 +64,9 @@ const gus = {
     titleText : "Gus",
     textTag: "p",
     bodyText: "Drink in moderation.",
-    imgSrc: "",
-    imgAlt: "",
+    imgName: gusDialog,
+    imgSrc: "./gus-dialog.png",
+    imgAlt: "Gus Dialog Box Image",
 }
 
 const emily = {
@@ -66,8 +74,9 @@ const emily = {
     titleText : "Emily",
     textTag: "p",
     bodyText: "Drink in moderation.",
-    imgSrc: "",
-    imgAlt: "",
+    imgName: emilyDialog,
+    imgSrc: "./emily-dialog.png",
+    imgAlt: "Emily Dialog Box Image",
 }
 
 

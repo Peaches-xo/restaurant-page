@@ -51,11 +51,19 @@ footer ul{
   
 }
 
+header li{
+    font-size: 30px;
+}
+
+footer li{
+   font-size: 22px;
+}
+
 header li,
 footer li{
     padding: 10px 20px;
     color: #fbfbf0;
-    font-size: 30px;
+    
     font-family: 'StardewValley';
 }
 
@@ -64,7 +72,9 @@ footer li{
     /* background-color: var(--lightYellow); */
     background:linear-gradient(180deg, rgba(255,200,124,1) 0%, rgba(255,200,124,1) 40%, rgba(237,172,109,1) 100%);
     font-family: 'SV_Thin';
-    margin: 100px;
+    color: #2D0915;
+    text-shadow: 0px 2px #d9965fa8;
+    margin: 100px 200px ;
     padding: 50px;
     border: solid 10px transparent;
     border-radius: 10px;
@@ -72,17 +82,40 @@ footer li{
     border-image-slice: 33%;
     transition: 0.3s ease;
     line-height: 1.1;
-    letter-spacing: 0.9px;
+    letter-spacing: 0.3px;
+    word-spacing: 1.5px;
+}
+.wrapper{
+    margin: 20px 0px;
 }
 
-
 .wrapper h1 {
-    font-family: 'SDV_CAPS';
+    /* font-family: 'SDV_CAPS'; */
+    font-family: 'StardewValley';
+ 
     font-size: 50px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 p {
     margin: 10px;
     font-size: 18px;
+}
+
+section{
+    background-color: #ffffff57;
+    margin: 20px auto;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 2px;
+    width: 50%;
+
+}
+
+div.wrapper h1{
+
+    /* transform: translate(1px, 100px); */
 }
 
 
@@ -94,10 +127,12 @@ p {
 
 
 footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    
 }
 footer ul{
     background-color: rgb(21 148 136 / 37%);
+  
 }

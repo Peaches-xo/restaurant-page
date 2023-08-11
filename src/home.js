@@ -1,4 +1,6 @@
 // Module to load HOME MODULE content
+import saloonImg from './saloon.png';
+import map from './Map.png';
 
 export { homePageLoad };
 
@@ -8,6 +10,7 @@ function homePageLoad(){
     //CREATES THE DIV
     const content = document.createElement('div');
     content.id = "content";
+    //const header = document.querySelector('header');
     const footer = document.querySelector('footer');
    
     //ADDS CONTENT
@@ -26,11 +29,7 @@ function homePageLoad(){
             }
 
             if(obj.imgSrc){
-                let img = document.createElement('img');
-                img.setAttribute('src', obj.imgSrc);
-                img.setAttribute('alt', obj.imgAlt);
-                img.setAttribute('style', obj.style);
-                wrapper.appendChild(img);        
+                wrapper.appendChild(imageFactory(obj.imgName));
             }
 
             content.appendChild(wrapper);
@@ -39,7 +38,6 @@ function homePageLoad(){
 
 
     //APPENDS TO DOM
-    //document.body.appendChild(content);
     document.body.insertBefore(content,footer); 
 }
 
@@ -55,7 +53,8 @@ const about = {
     titleText: "About",
     textTag: "p",
     bodyText: "The Stardrop Saloon is owned by Gus, and is located in the center of Pelican Town. It's a meeting place for many villagers, and hosts a variety of entertainment, including fully playable arcade machines, a jukebox, and a Joja Cola soda machine.",
-    imgSrc: "/src/saloon.png",
+    imgSrc: "./src/saloon.png",
+    imgName: saloonImg,
     imgAlt: "Stardew Valley Stardrop Saloon",
     style: "width: 250px",
 }
@@ -72,9 +71,15 @@ const location = {
     titleText: "Location",
     textTag: "p",
     bodyText: "The Stardrop Saloon is located in the center of Pelican Town.",
+    imgName: map,
     imgSrc : "/src/Map.png",
     imgAlt: "Stardew Valley Map",
 }
 
 let contentArrayofObjects = [heading, about, hours, location];
 
+function imageFactory(image){
+    const myImage = new Image();
+    myImage.src = image;
+    return myImage;
+}
