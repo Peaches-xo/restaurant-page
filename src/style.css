@@ -108,13 +108,16 @@ p {
 
 section{
     background-color: #ffffff57;
+
     margin: 20px auto;
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     border-radius: 2px;
-    width: 50%;
+    min-width: 80%;
+
 }
 
 .itemWrapper{

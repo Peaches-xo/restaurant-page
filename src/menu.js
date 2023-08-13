@@ -58,8 +58,15 @@ let bread = new Item('Bread', 'A crusty baguette', '120g', breadImg, 'Stardew Va
 let spaghetti = new Item('Spaghetti', 'An old favourite', '240g', spaghettiImg, 'Stardew Valley Spaghetti');
 let pizza = new Item('Pizza', "Popular for all the right reasons", '600g', pizzaImg, 'Stardew Valley Pizza');
 
+
+let beer = new Item('Beer', 'Drink in moderation', '400g', beerImg, 'Stardew Valley Beer');
+let coffee = new Item('Coffee', 'It smells delicious. This is sure to give you a boost.', '300g', coffeeImg, 'Stardew Valley Coffee');
+let cola = new Item('Joja Cola', 'The flagship product of Joja corporation.', '75g', colaImg, 'Stardew Valley Joja Cola');
+
+
 // add instances to array
 let mealsArray = [salad, bread, spaghetti, pizza];
+let bevArray = [beer, coffee, cola];
 
 //loop through array, calling createImage method for each, then appending returned wrapper to the section 
 
@@ -104,11 +111,16 @@ document.body.insertBefore(content,footer);
     sectionNames.forEach(createMainSections);
 
    let mealsSection = document.querySelector('.meals');
+        mealsSection.appendChild(salad.createElement());
+        mealsSection.appendChild(bread.createElement());
+        mealsSection.appendChild(spaghetti.createElement());
+        mealsSection.appendChild(pizza.createElement());
 
-    mealsSection.appendChild(salad.createElement());
-    mealsSection.appendChild(bread.createElement());
-    mealsSection.appendChild(spaghetti.createElement());
-    mealsSection.appendChild(pizza.createElement());
+    let bevSection = document.querySelector('.beverages');
+        bevSection.appendChild(beer.createElement());
+        bevSection.appendChild(coffee.createElement());
+        bevSection.appendChild(cola.createElement());
+
 
 //loop through meals array and call meal.createElement on each meal
 mealsArray.forEach((element) => console.log(element));
