@@ -7,72 +7,61 @@ import breadImg from './Bread.png'
 import spaghettiImg from './Spaghetti.png';
 import pizzaImg from './Pizza.png';
 
-
 export { menuPageLoad };
 
-
-//DATA OBJECTS
-const beverages = [
-    {
-        titleText : "Beer",
-        bodyText: "Drink in moderation.",
-        priceText:"400g",
-        imgName: beerImg,
-        imgAlt: "Stardew Valley Beer",
-    },
-    {
-        titleText : "Coffee",
-        bodyText: "It smells delicious. This is sure to give you a boost.",
-        priceText:"300g",
-        imgName: coffeeImg,
-        imgAlt: "Stardew Valley Coffee",
-    },
-    {
-        titleText : "Joja Cola",
-        bodyText: "The flagship product of Joja corporation",
-        priceText:"75g",
-        ImgName: colaImg,
-        imgAlt: "Stardew Valley Joja Cola",
+class Item {
+    constructor(name, description, price, imgName, imgAlt){
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imgName = imgName;
+        this.imgAlt = imgAlt;
     }
-]
 
-const meals = [
-    {
-        titleText: "Salad",
-        bodyText: "A healthy garden salad.",
-        priceText:"220g",
-        imgName: saladImg,
-        imgAlt: "Stardew Valley Salad",
-    },
-    {
-        titleText : "Bread",
-        bodyText: "A crusty baguette.",
-        priceText: "120g",
-        imgName: breadImg,
-        imgAlt: "Stardew Valley Bread",
-    },
-    {
-        titleText : "Spaghetti",
-        bodyText: "An old favorite.",
-        priceText: "240g",
-        imgName: spaghettiImg,
-        imgAlt: "Stardew Valley Spaghetti",
-    },
-    {
-        titleText : "Pizza",
-        bodyText: "It's popular for all the right reasons.",
-        priceText: "600g",
-        imgName: pizzaImg,
-        imgAlt: "Stardew Valley Pizza",
-    },
+    createElement(){
+        let wrapper = document.createElement('div');
+        wrapper.classList.add('itemWrapper');
 
-]
-const subheadings = [beverages, meals]; //array of objects, array of objects 
+        let leftwrap = document.createElement('div');
+        leftwrap.classList.add('leftwrap');
+        let rightwrap = document.createElement('div');
+        rightwrap.classList.add('rightwrap');
+
+        wrapper.appendChild(leftwrap);
+        wrapper.appendChild(rightwrap);
 
 
+        let itemName = document.createElement('h2');
+        itemName.textContent = this.name;
+        leftwrap.appendChild(itemName);
 
+        let itemDesc = document.createElement('p');
+        itemDesc.textContent = this.description;
+        leftwrap.appendChild(itemDesc);
 
+        let itemPrice = document.createElement('span');
+        itemPrice.textContent = this.price;
+        leftwrap.appendChild(itemPrice);
 
+        let itemImage = document.createElement('img');
+        itemImage.src = this.imgName;
+        itemImage.alt = this.imgAlt;
+        rightwrap.appendChild(itemImage);
+        
+        return wrapper;
+    }
+}
+
+//create instances of class for all food and bev items
+let salad = new Item('Salad', 'A healthy garden salad', '220g', saladImg, 'Stardew Valley Salad');
+let bread = new Item('Bread', 'A crusty baguette', '120g', breadImg, 'Stardew Valley Bread');
+let spaghetti = new Item('Spaghetti', 'An old favourite', '240g', spaghettiImg, 'Stardew Valley Spaghetti');
+let pizza = new Item('Pizza', "Popular for all the right reasons", '600g', pizzaImg, 'Stardew Valley Pizza');
+
+// add instances to array
+let mealsArray = [salad, bread, spaghetti, pizza];
+
+//loop through array, calling createImage method for each, then appending returned wrapper to the section 
 
 
 
@@ -80,12 +69,13 @@ const subheadings = [beverages, meals]; //array of objects, array of objects
 
 //function that creates div, adds content and appends to dom
 function menuPageLoad(){
-
     //CREATES THE DIV
     const content = document.createElement('div');
     content.id = "content";
     const footer = document.querySelector('footer');
 
+//APPENDS TO DOM
+document.body.insertBefore(content,footer); 
 
 
     function createHeading(){
@@ -93,40 +83,41 @@ function menuPageLoad(){
         wrapper.classList.add('wrapper');
      
         let h1heading = document.createElement('h1');
-        h1heading.textContent = "The Stardrop Saloon"
+        h1heading.textContent = "The Stardrop Saloon Menu"
         wrapper.appendChild(h1heading);
         content.appendChild(wrapper);
     }
     createHeading();
 
-    function createMainSections(arr){
+    function createMainSections(arrItem){
         let sectionwrapper = document.createElement('section');
         sectionwrapper.classList.add('section');
+        sectionwrapper.classList.add(arrItem.toLowerCase());
      
         let sectionHeading = document.createElement('h2');
-        sectionHeading.textContent = arr; //how to get variable name of array here
-        sectionwrapper.appendChild(sectionHeading);
+        sectionHeading.textContent = arrItem; 
         
-        //code to loop through objects in arr
-
-
-
+        sectionwrapper.appendChild(sectionHeading);
         content.appendChild(sectionwrapper);
     }
+    let sectionNames = ["Beverages", "Meals"];
+    sectionNames.forEach(createMainSections);
 
-    //calls createMainSections function on each array in subheadings (2 arrays)
-     subheadings.forEach(createMainSections);
-   
-  
-  
+   let mealsSection = document.querySelector('.meals');
 
+    mealsSection.appendChild(salad.createElement());
+    mealsSection.appendChild(bread.createElement());
+    mealsSection.appendChild(spaghetti.createElement());
+    mealsSection.appendChild(pizza.createElement());
 
+//loop through meals array and call meal.createElement on each meal
+mealsArray.forEach((element) => console.log(element));
 
 
 
 
 //APPENDS TO DOM
-document.body.insertBefore(content,footer); 
+//document.body.insertBefore(content,footer); 
   
 }
 
@@ -135,98 +126,103 @@ document.body.insertBefore(content,footer);
 
 
 
-function createItems(item){
-    let itemWrapper = document.createElement('div');
-    itemWrapper.classList.add('item');
+// function createItems(item){
+//     let itemWrapper = document.createElement('div');
+//     itemWrapper.classList.add('item');
 
-    let title = document.createElement('h3');
-    title.textContent = item.titleText;
-    itemWrapper.appendChild(title);
+//     let title = document.createElement('h3');
+//     title.textContent = item.titleText;
+//     itemWrapper.appendChild(title);
 
-    let text = document.createElement('p');
-    text.textContent = item.bodyText;
-    itemWrapper.appendChild(text);
+//     let text = document.createElement('p');
+//     text.textContent = item.bodyText;
+//     itemWrapper.appendChild(text);
 
-    let price = document.createElement('span');
-    price.textContent = item.priceText;
-    itemWrapper.appendChild(price);
+//     let price = document.createElement('span');
+//     price.textContent = item.priceText;
+//     itemWrapper.appendChild(price);
 
-    let itemImage = document.createElement('img');
-    itemImage.src = item.imgName;
-    itemImage.alt = item.imgAlt;
-    itemWrapper.appendChild(itemImage);
+//     let itemImage = document.createElement('img');
+//     itemImage.src = item.imgName;
+//     itemImage.alt = item.imgAlt;
+//     itemWrapper.appendChild(itemImage);
 
-    document.querySelector('')
-    sectionwrapper.appendChild(itemWrapper);
-//for each item in array: 
-    //create wrapper div class item
-    //create tag elements
-    //add content
-    //add classes
-    //append each item to wrapper div 
-    //return created element
-}
-
-
-
-
-
-
-// //DATA OBJECTS
-// const heading = {
-//     titleTag: "h1",
-//     titleText : "The Stardrop Saloon",
+//     document.querySelector('')
+//     sectionwrapper.appendChild(itemWrapper);
+// //for each item in array: 
+//     //create wrapper div class item
+//     //create tag elements
+//     //add content
+//     //add classes
+//     //append each item to wrapper div 
+//     //return created element
 // }
 
-// const subheadings = [beverages, meals];
 
+// ------------------------------------
+
+
+
+
+
+
+//DATA OBJECTS
 // const beverages = [
 //     {
-//         titleTag : "h3",
 //         titleText : "Beer",
-//         textTag: "p",
 //         bodyText: "Drink in moderation.",
-//         priceTag: "span",
 //         priceText:"400g",
-//         imgSrc: "",
 //         imgName: beerImg,
 //         imgAlt: "Stardew Valley Beer",
 //     },
 //     {
-//         titleTag : "h3",
 //         titleText : "Coffee",
-//         textTag: "p",
 //         bodyText: "It smells delicious. This is sure to give you a boost.",
-//         priceTag: "span",
 //         priceText:"300g",
-//         imgSrc: "",
 //         imgName: coffeeImg,
 //         imgAlt: "Stardew Valley Coffee",
 //     },
 //     {
-//         titleTag : "h3",
 //         titleText : "Joja Cola",
-//         textTag: "p",
 //         bodyText: "The flagship product of Joja corporation",
-//         priceTag: "span",
 //         priceText:"75g",
-//         imgSrc: "",
 //         ImgName: colaImg,
 //         imgAlt: "Stardew Valley Joja Cola",
 //     }
 // ]
 
 // const meals = [
-//         {
-//         titleTag : "h3",
-//         titleText : "Salad",
-//         textTag: "p",
-//         bodyText: "	A healthy garden salad.",
-//         priceTag: "span",
-//         priceText:"$220",
-//         imgSrc: "",
-//         imgAlt: "",
+//     {
+//         titleText: "Salad",
+//         bodyText: "A healthy garden salad.",
+//         priceText:"220g",
+//         imgName: saladImg,
+//         imgAlt: "Stardew Valley Salad",
 //     },
-
+//     {
+//         titleText : "Bread",
+//         bodyText: "A crusty baguette.",
+//         priceText: "120g",
+//         imgName: breadImg,
+//         imgAlt: "Stardew Valley Bread",
+//     },
+//     {
+//         titleText : "Spaghetti",
+//         bodyText: "An old favorite.",
+//         priceText: "240g",
+//         imgName: spaghettiImg,
+//         imgAlt: "Stardew Valley Spaghetti",
+//     },
+//     {
+//         titleText : "Pizza",
+//         bodyText: "It's popular for all the right reasons.",
+//         priceText: "600g",
+//         imgName: pizzaImg,
+//         imgAlt: "Stardew Valley Pizza",
+//     },
 // ]
+
+//const subheadings = [beverages, meals]; //array of objects, array of objects 
+
+
 

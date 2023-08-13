@@ -42,6 +42,10 @@ body{
     
 }
 
+header{
+    position:sticky;
+}
+
 header ul,
 footer ul{
    display: flex;
@@ -74,7 +78,7 @@ footer li{
     font-family: 'SV_Thin';
     color: #2D0915;
     text-shadow: 0px 2px #d9965fa8;
-    margin: 100px 200px ;
+    margin: 100px;
     padding: 50px;
     border: solid 10px transparent;
     border-radius: 10px;
@@ -107,19 +111,32 @@ section{
     margin: 20px auto;
     padding: 10px 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     border-radius: 2px;
     width: 50%;
-
 }
 
-div.wrapper h1{
-
-    /* transform: translate(1px, 100px); */
+.itemWrapper{
+    background: url('./menubox.png') no-repeat;
+    background-size: auto;
+    display:flex;
+    margin: 10px 0px;
+    padding: 20px 30px;
+    min-height: 162px;
+    gap: 15px;
+    width: 320px;
+    justify-content: space-between;
 }
 
+.itemWrapper h2{
+    padding: 20px 0px 0px;
+}
 
-
+.rightwrap{
+   display:flex;
+   align-items: center;
+}
 
 
 

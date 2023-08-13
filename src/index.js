@@ -26,7 +26,7 @@ function createHeader(){
 }
 document.body.appendChild(createHeader());
 
-let content = document.querySelector('#content');
+
 
 
 function eventHandler(e){
