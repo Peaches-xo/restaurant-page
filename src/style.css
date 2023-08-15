@@ -65,12 +65,17 @@ a{
     color: #fbfbf0;
 }
 
-a:hover,
-li:hover{
-    color: #d8d8bd;
+
+
+header li:hover{
     color: #DFA22D;
     cursor: pointer;
-    
+}
+
+footer a:hover,
+footer li:hover{
+    color: #edcfae;
+    cursor: pointer;
 }
 
 #content{
