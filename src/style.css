@@ -1,15 +1,15 @@
 /* CSS for TOP // Restaurant Page */
-
-:root{
-    --lightYellow: #fff9cb;
-}
-
 * {
     border: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     text-decoration: none;
     list-style-type: none;
+}
+img { 
+    max-width: 100%; 
+    height: auto; 
 }
 
 @font-face {
@@ -22,16 +22,10 @@
     src: url('/src/OpenSans.ttf') format('truetype');
 }
 
-@font-face {
-    font-family: 'SDV_CAPS';
-    src: url('/src/SDV_CAPS.ttf') format('truetype');
-}
-
 @font-face{
     font-family: 'SV_Thin';
     src: url('/src/SVThin.ttf') format('truetype');
 }
-
 
 body{
     position: relative;
@@ -39,7 +33,6 @@ body{
     background: url('/src/med_logo.png'), url('/src/stardewbackground.png') no-repeat fixed center center / cover;
     background-repeat: no-repeat;
     background-position: center;
-    
 }
 
 header{
@@ -49,10 +42,8 @@ header{
 header ul,
 footer ul{
    display: flex;
-   width: 100vw;
    justify-content: center;
    background-color: rgba(21, 71, 148, 0.8);
-  
 }
 
 header li{
@@ -66,19 +57,28 @@ footer li{
 header li,
 footer li{
     padding: 10px 20px;
-    color: #fbfbf0;
-    
+    color: #fbfbf0 ;
     font-family: 'StardewValley';
+    transition: 0.2s;
+}
+a{
+    color: #fbfbf0;
 }
 
+a:hover,
+li:hover{
+    color: #d8d8bd;
+    color: #DFA22D;
+    cursor: pointer;
+    
+}
 
 #content{
-    /* background-color: var(--lightYellow); */
     background:linear-gradient(180deg, rgba(255,200,124,1) 0%, rgba(255,200,124,1) 40%, rgba(237,172,109,1) 100%);
     font-family: 'SV_Thin';
     color: #2D0915;
     text-shadow: 0px 2px #d9965fa8;
-    margin: 100px;
+    margin: 10px 100px;
     padding: 50px;
     border: solid 10px transparent;
     border-radius: 10px;
@@ -89,14 +89,19 @@ footer li{
     letter-spacing: 0.3px;
     word-spacing: 1.5px;
 }
+
+.contactpage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .wrapper{
     margin: 20px 0px;
 }
 
 .wrapper h1 {
-    /* font-family: 'SDV_CAPS'; */
     font-family: 'StardewValley';
- 
+
     font-size: 50px;
     margin-bottom: 20px;
     text-align: center;
@@ -107,8 +112,7 @@ p {
 }
 
 section{
-    background-color: #ffffff57;
-
+    /* background-color: #ffffff57; */
     margin: 20px auto;
     padding: 10px 20px;
     display: flex;
@@ -125,9 +129,9 @@ section{
     background-size: auto;
     display:flex;
     margin: 10px 0px;
-    padding: 20px 30px;
+    padding: 16px 30px 0px 26px;
     min-height: 162px;
-    gap: 15px;
+    /* gap: 15px; */
     width: 320px;
     justify-content: space-between;
 }
@@ -143,6 +147,16 @@ section{
 
 
 
+/* home.js */
+.innerWrap{
+    display:flex;
+    align-items: center;
+    gap: 20px;
+}
+.innerWrap p{
+    width: 50%;
+}
+
 
 
 
@@ -154,5 +168,59 @@ footer{
 }
 footer ul{
     background-color: rgb(21 148 136 / 37%);
-  
+}
+
+
+
+
+
+
+h1{
+    animation: loader 1s ease-in ;
+}
+
+@keyframes loader {
+    0% {
+      transform: translateY(-10px);
+      opacity: 0%;
+    }
+    100% {
+       transform: translateY(0px);
+       opacity: 100%; 
+    }
+  }
+ 
+
+
+
+
+@media screen and (max-width: 900px){
+    #content{
+        padding: 5%;
+        margin: 5%;
+    }
+    .innerWrap{
+        flex-direction: column;
+    }
+
+    .innerWrap p{
+        width: unset;
+    }
+    
+}
+
+@media screen and (max-width: 400px){
+    header li{
+        padding: 10px 5px;
+        font-size: 24px;
+    }
+
+    footer li{
+        padding: 10px 5px;
+        font-size: 20px;
+    }
+
+    header ul{
+        gap: 10px;
+    }
 }

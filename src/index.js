@@ -26,9 +26,6 @@ function createHeader(){
 }
 document.body.appendChild(createHeader());
 
-
-
-
 function eventHandler(e){
     switch (e.target.id){
         case 'home':
@@ -54,29 +51,59 @@ function clearContent(){
 }
 
 
-
-
-
 function createFooter(){
-//create elements
-let footer = document.createElement('footer');
-const creditMenu = document.createElement('ul');
+    //create elements
+    let footer = document.createElement('footer');
+    const creditMenu = document.createElement('ul');
 
-let creditMenuItemsArray = ["Credits", "The Odin Project", "Github"]; 
+    //create objects for each array item
+    let credits = {
+        loadCredits(){
+            alert("Image credits: www.stardewvalley.com");
+        },
+        linkText: 'Credits'
+    }
 
-for (let i = 0; i < creditMenuItemsArray.length; i++){
-    //create li, add array item as textContent of li, add id, add li as child of menu (ul)
-    let listItem = document.createElement('li');
-    listItem.textContent = creditMenuItemsArray[i];
+    let odin = {
+        link: 'https://www.theodinproject.com/lessons/node-path-javascript-restaurant-page',
+        linkText: 'The Odin Project'
+    }
 
-    creditMenu.appendChild(listItem);
-}
+    let github = {
+        link: 'https://github.com/Peaches-xo/restaurant-page',
+        linkText: 'Github'
+    }
+
+    let creditMenuItemsArray = [credits, odin, github]; 
+
+
+    creditMenuItemsArray.forEach((item) => {
+        let listItem = document.createElement('li');
+        
+        if (item.link){
+            let linkItem = document.createElement('a');
+            linkItem.href = item.link;
+            linkItem.textContent = item.linkText;
+            listItem.appendChild(linkItem);
+        } else {
+            listItem.textContent = item.linkText;
+        }
+        creditMenu.appendChild(listItem);
+
+        
+
+    })
 footer.appendChild(creditMenu);
+
+
+
 
 return footer;
 }
 document.body.appendChild(createFooter());
-
+let creditBtn = document.querySelector('footer>ul>li:first-child');
+creditBtn.addEventListener('click', () => alert("Images from www.stardewvalley.com")); 
+console.log(creditBtn);
 
 
 

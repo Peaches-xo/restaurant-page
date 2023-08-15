@@ -1,5 +1,5 @@
 // Module to load HOME MODULE content
-import saloonImg from './saloon.png';
+import saloonImg from './Saloon-nobg.png';
 import map from './Map.png';
 
 export { homePageLoad };
@@ -10,7 +10,6 @@ function homePageLoad(){
     //CREATES THE DIV
     const content = document.createElement('div');
     content.id = "content";
-    //const header = document.querySelector('header');
     const footer = document.querySelector('footer');
    
     //ADDS CONTENT
@@ -22,16 +21,20 @@ function homePageLoad(){
             heading.textContent = obj.titleText;
             wrapper.appendChild(heading);
             
+
+            let innerWrap = document.createElement('div');
+            innerWrap.classList.add('innerWrap');
+
             if(obj.textTag){
                 let text = document.createElement(obj.textTag);
                 text.textContent = obj.bodyText;
-                wrapper.appendChild(text);
+                innerWrap.appendChild(text);
             }
 
             if(obj.imgSrc){
-                wrapper.appendChild(imageFactory(obj.imgName));
+                innerWrap.appendChild(imageFactory(obj.imgName));
             }
-
+            wrapper.appendChild(innerWrap);
             content.appendChild(wrapper);
          }
          contentArrayofObjects.forEach(createSection);

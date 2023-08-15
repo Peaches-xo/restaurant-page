@@ -10,6 +10,7 @@ function contactPageLoad(){
 
         const content = document.createElement('div');
         content.id = "content";
+        content.classList.add("contactpage");
         const footer = document.querySelector('footer');
 
         function createSection(obj){
@@ -63,7 +64,7 @@ const gus = {
     titleTag: "h2",
     titleText : "Gus",
     textTag: "p",
-    bodyText: "Drink in moderation.",
+    bodyText: "Owner - Stardrop Saloon.",
     imgName: gusDialog,
     imgSrc: "./gus-dialog.png",
     imgAlt: "Gus Dialog Box Image",
@@ -73,7 +74,7 @@ const emily = {
     titleTag: "h2",
     titleText : "Emily",
     textTag: "p",
-    bodyText: "Drink in moderation.",
+    bodyText: "Bartender - Stardrop Saloon",
     imgName: emilyDialog,
     imgSrc: "./emily-dialog.png",
     imgAlt: "Emily Dialog Box Image",
